@@ -1,0 +1,632 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>B.E.A.R</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'bower_components/font-awesome/css/font-awesome.min.css' %}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'bower_components/Ionicons/css/ionicons.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+    <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="{% static 'dist/css/skins/_all-skins.min.css' %}">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="{% static 'bower_components/jvectormap/jquery-jvectormap.css' %}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{% static 'bower_components/datatables.net-bs/css/dataTables.bootstrap2.min.css' %}">
+    <!-- Date Picker -->
+    <link rel="stylesheet"
+          href="{% static 'bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}">
+    <!-- DateTime picker -->
+    <link rel="stylesheet" href="{% static 'plugins/timepicker/bootstrap-timepicker.min.css' %}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{% static 'bower_components/select2/dist/css/select2.min.css' %}">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <!-- iCheck 1.0.1 -->
+    <link rel="stylesheet" href="{% static 'plugins/iCheck/all.css' %}">
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="{% url 'home' %}" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>Bear</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <img src="static/bear.svg" width="100%" height="100%">
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            {#      <div class="navbar-custom-menu">#}
+            {#        <ul class="nav navbar-nav">#}
+            {#                   <!-- Notifications: style can be found in dropdown.less -->#}
+            {#          <li class="dropdown notifications-menu">#}
+            {#            <a href="#" class="dropdown-toggle" data-toggle="dropdown">#}
+            {#              <i class="fa fa-bell-o"></i>#}
+            {#              <span class="label label-warning">10</span>#}
+            {#            </a>#}
+            {#            <ul class="dropdown-menu">#}
+            {#              <li class="header">You have 10 notifications</li>#}
+            {#              <li>#}
+            {#                <!-- inner menu: contains the actual data -->#}
+            {#                <ul class="menu">#}
+            {#                  <li>#}
+            {#                    <a href="#">#}
+            {#                      <i class="fa fa-users text-aqua"></i> 5 new members joined today#}
+            {#                    </a>#}
+            {#                  </li>#}
+            {#                  <li>#}
+            {#                    <a href="#">#}
+            {#                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the#}
+            {#                      page and may cause design problems#}
+            {#                    </a>#}
+            {#                  </li>#}
+            {#                  <li>#}
+            {#                    <a href="#">#}
+            {#                      <i class="fa fa-users text-red"></i> 5 new members joined#}
+            {#                    </a>#}
+            {#                  </li>#}
+            {#                  <li>#}
+            {#                    <a href="#">#}
+            {#                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made#}
+            {#                    </a>#}
+            {#                  </li>#}
+            {#                  <li>#}
+            {#                    <a href="#">#}
+            {#                      <i class="fa fa-user text-red"></i> You changed your username#}
+            {#                    </a>#}
+            {#                  </li>#}
+            {#                </ul>#}
+            {#              </li>#}
+            {#              <li class="footer"><a href="#">View all</a></li>#}
+            {#            </ul>#}
+            {#          </li>#}
+            {#          <!-- User Account: style can be found in dropdown.less -->#}
+            {#          <li class="dropdown user user-menu">#}
+            {#            <a href="#" class="dropdown-toggle" data-toggle="dropdown">#}
+            {#              <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="user-image" >#}
+            {#              <span class="hidden-xs">Mikail Utku Ünver</span>#}
+            {#            </a>#}
+            {#            <ul class="dropdown-menu">#}
+            {#              <!-- User image -->#}
+            {#              <li class="user-header">#}
+            {#                <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">#}
+            {##}
+            {#                <p>#}
+            {#                  Alexander Pierce - Web Developer#}
+            {#                  <small>Member since Nov. 2012</small>#}
+            {#                </p>#}
+            {#              </li>#}
+            {#              </li>#}
+            {#              <!-- Menu Footer-->#}
+            {#              <li class="user-footer">#}
+            {#                <div class="pull-left">#}
+            {#                  <a href="#" class="btn btn-default btn-flat">Profile</a>#}
+            {#                </div>#}
+            {#                <div class="pull-right">#}
+            {#                  <a href="#" class="btn btn-default btn-flat">Sign out</a>#}
+            {#                </div>#}
+            {#              </li>#}
+            {#            </ul>#}
+            {#          </li>#}
+            {#        </ul>#}
+            {#      </div>#}
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="active treeview">
+                <li><a href="{% url 'home' %}"><i class="fa fa-line-chart"></i> <span>Analiz</span></a></li>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <!-- Date and time -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">Başlangıç Tarihi</h3>
+                        </div>
+                        <div class="box-body">
+                            <!-- Date -->
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <label>Gün:</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="baslangic_tarihi">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Saat:</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="baslangic_saati">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">Bitiş Tarihi</h3>
+                        </div>
+                        <div class="box-body">
+                            <!-- Date -->
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <label>Gün:</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="bitis_tarihi">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Saat:</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="bitis_saati">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <div class="form-group">
+                                <h3 class="box-title">Örneklendirme Aralığı</h3>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-md-4">
+                                <label>Değer:</label>
+                                <div class="form-group">
+                                    <label>
+                                        <input id="txtzaman" type="text" name="txtzaman" class="form-control"
+                                               placeholder="Sayısal Değer">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <label>Zaman Paramentresi:</label>
+                                <select id="Zaman_Dilimi" class="form-control">
+                                    <option value="">-----</option>
+                                    <option value="s">Saniye</option>
+                                    <option value="m">Dakika</option>
+                                    <option value="h">Saat</option>
+                                    <option value="d">Gun</option>
+                                    <option value="w">Hafta</option>
+                                    <option value="n">Ay</option>
+                                    <option value="y">Yil</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div class="col-md-6">
+                                <label>Yerleşke Tipi</label>
+                                <select name="Category" id="Category" style="width: 100%;"></select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Yerleşke Yeri</label>
+                                <select name="SubCategory" id="SubCategory" style="width: 100%;"
+                                        class="form-control"></select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Veri Kaynağı</label>
+                                    <select name="data_source" id="data_source" style="width: 100%;"
+                                            class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Algoritma Tipi</label>
+                                    <select name="Analyze" id="Analyze" style="width: 100%;"
+                                            class="form-control "></select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>
+                                    <input id="checkbox1" type="checkbox" class="minimal">
+                                    Veriyi Temizle(Anomali-Outlier)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Content Header (Page header) -->
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Veri Tablosu</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="table1" class="display" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>Sensor Adi</th>
+                                    <th>Analiz</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box -->
+        </section>
+        <!-- /.content -->
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+    </div>
+    <strong>B.E.A.R &copy; 2018 </strong>
+</footer>
+
+
+<!-- jQuery 3 -->
+<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{% static 'bower_components/jquery-ui/jquery-ui.min.js' %}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>$.widget.bridge('uibutton', $.ui.button);</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<!-- jvectormap -->
+<script src="{% static 'plugins/jvectormap/jquery-jvectormap-1.2.2.min.js' %}"></script>
+<script src="{% static 'plugins/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+<!-- datepicker -->
+<script src="{% static 'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{% static 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'dist/js/demo.js' %}"></script>
+<!-- Select2 -->
+<script src="{% static 'bower_components/select2/dist/js/select2.full.min.js' %}"></script>
+<!-- DataTables -->
+<script src="{% static 'bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+<!-- date-range-picker -->
+<script src="{% static 'admin/js/bootstrap-datepicker.tr.js' %}"></script>
+<!-- bootstrap time picker -->
+<script src="{% static 'plugins/timepicker/bootstrap-timepicker.min.js' %}"></script>
+<!-- iCheck 1.0.1 -->
+<script src="{% static 'plugins/iCheck/icheck.min.js' %}"></script>
+
+
+<script>
+
+    function StartAnalysis(sensorName) {
+        var analysisType = $('#Analyze').select2('data')[0]['text'];
+        var datasourceType = $('#data_source').val();
+        var zaman_dilimi_ = $('#Zaman_Dilimi').val();
+        var textzaman = $('#txtzaman').val();
+        var anomali = Number($('#checkbox1').is(":checked"));
+
+        if (analysisType == 0) {
+            alert('Analiz seciniz');
+            return;
+        }
+        else {
+            var baslangic_saati = $('#baslangic_saati').val();
+            if (baslangic_saati.length == 7) {
+                baslangic_saati = ("0" + baslangic_saati)
+            }
+            var bitis_saati = $('#bitis_saati').val();
+            if (bitis_saati.length == 7) {
+                bitis_saati = ("0" + bitis_saati)
+            }
+            var baslangic_tarihi = $('#baslangic_tarihi').val();
+            var bitis_tarihi = $('#bitis_tarihi').val();
+            var startDate = (baslangic_tarihi + "-" + baslangic_saati);
+            var endDate = (bitis_tarihi + "-" + bitis_saati);
+            var url = "analiz_baslat/?dataSourceType=" + datasourceType + "&startDate=" + startDate + "&endDate="
+                + endDate + "&sensorName=" + sensorName + "&analysisType=" + analysisType + "&zaman_dilimi="
+                + zaman_dilimi_ + "&text_zaman=" + textzaman + "&anomali=" + anomali;
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success == true) {
+                        alert("Analiz baslatildi.")
+                    }
+                    else {
+                        alert("analiz baslatilamadi.")
+                    }
+                }
+            });
+        }
+
+    }
+
+
+    function LoadTable(data) {
+        for (var i = 0; i < data.length; i++) {
+            var sensorName = data[i].sensor_name;
+            data[i]["button"] = "<button onclick='StartAnalysis(\"" + sensorName + "\")'>Analiz!</button>"
+        }
+        $("#table1").DataTable({
+            destroy: true,
+            data: data,
+            "columns": [
+                {
+                    "data": "sensor_name"
+                },
+                {
+                    "data": "button",
+                }
+            ]
+        });
+
+    }
+
+    function LoadDataSourceip(data_source) {
+        var child_id = $("#SubCategory").val();
+        $("#data_source").change(function () {
+            var dsId = $(this).val();
+            var url = "data_source/?child_id=" + child_id + "&dsId=" + dsId;
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                success: function (data) {
+                    var emptyData = [{"id": 0, "text": "---"}];
+                    var newData = emptyData.concat(data);
+                    data_source = newData;
+                    return data_source;
+                }
+            });
+
+        });
+
+    }
+
+    function LoadCategories() {
+        var aaa = $("#table1").dataTable();
+        aaa.fnClearTable();
+        $.ajax({
+            url: "categories",
+            dataType: 'json',
+            success: function (data) {
+                var emptyData = [{"id": 0, "text": "---"}];
+                var newData = emptyData.concat(data);
+
+                $("#Category").select2(
+                    {
+                        data: newData
+                    }
+                );
+            }
+        });
+    }
+
+    function LoadChildCategories() {
+        $("#Category").change(function () {
+            var parentId = $(this).val();
+            var url = "sub_categories/?parent_id=" + parentId;
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                success: function (data) {
+                    $("#SubCategory").empty().trigger("change");
+                    var emptyData = [{"id": 0, "text": "---"}];
+                    var newData = emptyData.concat(data);
+                    $("#SubCategory").select2({data: newData,});
+                    if (data == "") {
+                        var aaa = $("#table1").dataTable();
+                        aaa.fnClearTable();
+                    }
+                }
+            });
+        });
+    }
+
+    function LoadSensorCategories() {
+        $("#data_source").change(function () {
+            var parentId = $("#SubCategory").val();
+            var dsId = $('#data_source').val();
+            if (parentId != null && dsId != null) {
+                var url = "sensor_name/?child_id=" + parentId + "&ds_id=" + dsId;
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    success: function (data) {
+                        LoadTable(data);
+                        if (data === "") {
+                            var aaa = $("#table1").dataTable();
+                            aaa.fnClearTable();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    function LoadSensorCategories2() {
+        $("#SubCategory").change(function () {
+            var parentId = $("#SubCategory").val();
+            var dsId = $('#data_source').val();
+            if (parentId != null) {
+                var url = "sensor_name/?child_id=" + parentId + "&ds_id=" + dsId;
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data !== "") {
+                            LoadTable(data);
+                        }
+                        else {
+                            var aaa = $("#table1").dataTable();
+                            aaa.fnClearTable();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    function LoadAnalyzeTypes() {
+        $.ajax({
+            url: "analyzers",
+            dataType: 'json',
+            success: function (data) {
+                var emptyData = [{"id": 0, "text": "---"}];
+                var newData = emptyData.concat(data);
+
+                $("#Analyze").select2(
+                    {
+                        data: newData
+                    }
+                );
+
+            }
+        });
+    }
+
+    function LoadDataSource() {
+
+        $("#SubCategory").change(function () {
+            var parentId = $(this).val();
+            var url = "data_source/?child_id=" + parentId;
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                success: function (data) {
+                    var emptyData = [{"id": 0, "text": "---"}];
+                    var newData = emptyData.concat(data);
+
+                    $("#data_source").select2(
+                        {
+                            data: newData
+                        }
+                    );
+
+                }
+            });
+
+        });
+    }
+
+    function LoadDate() {
+        //Date picker
+        $('#baslangic_tarihi').datepicker({
+            autoclose: true,
+            format: 'yyyy/mm/dd'
+        });
+        $('#bitis_tarihi').datepicker({
+            autoclose: true,
+            format: 'yyyy/mm/dd'
+        });
+        //Timepicker
+        $('#baslangic_saati').timepicker({
+            minuteStep: 1,
+            showInputs: false,
+            showSeconds: true,
+            showMeridian: false,
+            language: 'tr'
+        });
+        $('#bitis_saati').timepicker({
+            minuteStep: 1,
+            showInputs: false,
+            showSeconds: true,
+            showMeridian: false,
+        });
+    }
+
+    function ZamanDilimi() {
+        $("#Zaman_Dilimi").change(function () {
+            var zaman_dilimi = $('#Zaman_Dilimi').val();
+        })
+    }
+
+    //Checkbox
+    $('input[type="checkbox"].minimal').iCheck(
+        {
+            checkboxClass: 'icheckbox_minimal-blue'
+        }
+    );
+
+    $(document).ready(function () {
+
+        LoadCategories();
+        LoadChildCategories();
+        LoadAnalyzeTypes();
+        LoadSensorCategories();
+        LoadDataSource();
+        LoadSensorCategories2();
+        LoadDate();
+        ZamanDilimi();
+
+    });
+
+</script>
+</body>
+</html>
